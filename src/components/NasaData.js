@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NasaCard from "./NasaCard";
 export default function NasaData() {
-    const [photos, setPhotos] = useState([]);
+    const [photo, setPhotos] = useState([]);
 
     useEffect(() => {
         axios
-            .get(`https://api.nasa.gov/EPIC/api/natural/date/2015-10-31?api_key=DEMO_KEY`)
+            .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`)
             .then(response => {
                 console.log(response.data);
                 setPhotos(response.data);
@@ -17,16 +17,12 @@ export default function NasaData() {
     }, []);
     return (
         <div className="photo">
-            {photos.map(photo => {
-                return (
                     <NasaCard
                     key={photo.date}
-                    identifier={photo.identifier}
-                    caption={photo.caption}
-                    centroid_coordinates={photo.centroid_coordinates}
+                    title={photo.title}
+                    explanation={photo.explanation}
+                    hdurl={photo.hdurl}
                     />
-                );
-            })}
         </div>
-    );
+    )
 }
