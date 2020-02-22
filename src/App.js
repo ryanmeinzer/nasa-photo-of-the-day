@@ -1,13 +1,14 @@
 import React from "react";
+import NasaData from "./components/NasaData";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
+        Here's some cool data displayed from outer space. 
       </p>
+      <NasaData />
     </div>
   );
 }
